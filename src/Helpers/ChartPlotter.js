@@ -11,7 +11,7 @@ function ChartPlot(params) {
     return (
       <div class="overflow-auto px-4 py-5 lg:py-0 lg:w-1/2 sm:w-full lg:mb-10 sm:mb-1 border-box drop-shadow-[0_10px_10px_rgba(0,0,0,0.75)]">
       <div class="overflow-auto h-full bg-gray-100 px-8 pt-5 pb-4 rounded-lg text-center relative shadow-lg border-box ">
-        <div class="graph h-80">
+        <div class="graph h-80 my-auto">
           Waiting For Server Response
         </div>
       </div>
@@ -37,7 +37,7 @@ function ChartPlot(params) {
   }
 
   var BackgroundLine = {
-    data: Array(params.data.length).fill(params.range.max + 10),
+    data: Array(params.data.length).fill(Math.max(...params.data)+15),
     tension: 0,
     fill: true,
     showLine: true,

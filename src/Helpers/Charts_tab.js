@@ -7,9 +7,9 @@ function Choose(props) {
     return (
         <div class='mt-10 flex flex-row justify-center w-full'>
             <div class='flex text-white w-full sm:w-1/2 lg:w-1/3 mx-4 flex-row justify-center bg-gray-800 p-2 rounded-xl flex-wrap'>
-                <button onClick={() => { props.setType(1) }} class='w-full md:w-1/3 hover:bg-gray-700 rounded-lg py-1'>Hour</button>
-                <button onClick={() => { props.setType(2) }} class='w-full md:w-1/3 hover:bg-gray-700 rounded-lg py-1'>Day</button>
-                <button onClick={() => { props.setType(3) }} class='w-full md:w-1/3 hover:bg-gray-700 rounded-lg py-1'>Week</button>
+                <button onClick={() => { props.setType(1) }} class={'w-full md:w-1/3 hover:bg-gray-700 rounded-md py-1'+(props.type===1?' bg-gray-700':'')}>Hour</button>
+                <button onClick={() => { props.setType(2) }} class={'w-full md:w-1/3 hover:bg-gray-700 rounded-md py-1'+(props.type===2?' bg-gray-700':'')}>Day</button>
+                <button onClick={() => { props.setType(3) }} class={'w-full md:w-1/3 hover:bg-gray-700 rounded-md py-1'+(props.type===3?' bg-gray-700':'')}>Week</button>
             </div>
         </div>
     )
@@ -27,7 +27,6 @@ function ChartTab(props) {
 
     var [isLatest, setisLatest] = useState(false)
 
-    var zoomed= useState(false)
     var [type,setType] = useState(1)
 
     const hook = () => {
@@ -57,7 +56,7 @@ function ChartTab(props) {
         return (
             <>
                 <section>
-                    <Choose setType={setType}></Choose>
+                    <Choose setType={setType} type={type}></Choose>
                     <div class="overflow-auto container px-5 py-24 mx-auto">
                         <div class="overflow-auto flex flex-wrap -m-4">
                             <ChartPlot zoomed={false} labels={labels} title="CO2" data={CO2_data} range={Ranges.CO2}></ChartPlot>
